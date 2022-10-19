@@ -1,0 +1,19 @@
+type PatientId = nat32;
+type Patient = 
+ record {
+   aadharNo: text;
+   diseases: List;
+   firstName: text;
+   lastName: text;
+ };
+type List = 
+ opt record {
+       text;
+       List;
+     };
+service : {
+  create: (Patient) -> (PatientId);
+  delete: (PatientId) -> (bool);
+  read: (PatientId) -> (opt Patient) query;
+  update: (PatientId, Patient) -> (bool);
+}
